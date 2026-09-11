@@ -1,5 +1,3 @@
-run("definit_param.m");
-
 %% Définition des Polynômes
 s = tf('s');
 
