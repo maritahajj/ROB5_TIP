@@ -7,12 +7,10 @@ vit_q = 0.1 * 1e-3;
 acc_q = 1 * 1e-3;
 
 filter = true;
-u = 0.9;
+u = 0.999;
 
 run("definit_param.m");
-k1 = 5000;
-b1 = 400;
-x_reel = [k0;k1;k2;b0;b1;b2;m1;m2;m3];
+
 run("simule_systeme.m");
 run ("identifie_parametres.m");
 
