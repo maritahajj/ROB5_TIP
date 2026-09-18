@@ -5,7 +5,7 @@
 
 close all
 clc
-load releve_vit_cste_axe2; %% charge les relevés expérimentaux
+load releve_vit_cste_axe1; %% charge les relevés expérimentaux
 
 %% Paramètres connus a priori:
 kc2=0.0525; %% constante de couple de l'axe 2.
@@ -17,13 +17,13 @@ N1=20.25;
 
 
 %% Construction de la matrice Y.
-s = size(q2);
+s = size(q1);
 A = [];
 y = [];
 for k=1:s(1)
-    a = [cos(q2(k)) sign(qpfil2(k)) qpfil2(k) 1];
+    a = [cos(q1(k)) sign(qpfil1(k)) qpfil1(k) 1];
     A = [A; a];
-    y = [y; N2*kc2*ifil2(k)];
+    y = [y; N1*kc1*ifil1(k)];
 end
 
 disp("Size de A : ");
@@ -35,22 +35,22 @@ disp(rank(A));
 disp("Conditionnement de A : ");
 disp(cond(A));
 %% Calcul des paramètres
-p2_filt = (A' * A)\(A' * y);
+p1_filt = (A' * A)\(A' * y);
 
 %% Affichage des résultats.
 format long
-disp('Paramètres estimés à partir des données brutes : p2_filt = ');
-disp(p2_filt');
+disp('Paramètres estimés à partir des données brutes : p1_filt = ');
+disp(p1_filt');
 
 figure(1)
 clf; %% clear figure
-h=plot3(q2,qpfil2,kc2*N2*i2,'x');
+h=plot3(q1,qpfil1,kc1*N1*ifil1,'x');
 set(h,'LineWidth',0.5);
 hold on; %% permet de conserver le graphique et d'en ajouter d'autres sur la même fig.
-h=plot3(q2,qpfil2,A*p2_filt,'.');
+h=plot3(q1,qpfil1,A*p1_filt,'.');
 set(h,'LineWidth',1.5);
-title('Résultats de l''identification avec filtrage');
-legend('\Gamma_2 filtré', 'modèle');
+title('Résultats de l''identification sans filtrage');
+legend('\Gamma_1 non filtré', 'modèle');
 grid on;
 xlabel('$q_2$','Interpreter','latex')
 ylabel('$\dot{q}_2$','Interpreter','latex')
@@ -60,13 +60,13 @@ zlabel('$\tau$','Interpreter','latex')
 %% Extra plots to check the quality of the identification
 
 figure;
-qqplot(A*p2_filt-y)
+qqplot(A*p1_filt-y)
 grid on
 axis equal
 axis square
 
 figure;
-plot(y,A*p2_filt,'.')
+plot(y,A*p1_filt,'.')
 hold on
 plot([min(y) max(y)],[min(y) max(y)],'--g','LineWidth',2)
 grid on
