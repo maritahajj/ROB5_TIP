@@ -25,5 +25,5 @@ Le projet est divisé en trois fichiers MATLAB principaux :
 3.  Moindres Carrés Non-Linéaires : Utilisation de l'algorithme de Gauss-Newton pour minimiser l'erreur quadratique entre les mesures expérimentales et les prédictions du modèle.
 4.  Robustesse : Étude de l'impact du bruit de mesure, de la quantité de données (N), du conditionnement de la matrice (excitabilité des trajectoires) et de la sensibilité aux minima locaux (importance de l'estimation initiale).
 
-## Auteurs et Cadre
-Ce code a été développé dans le cadre des travaux pratiques de modélisation et d'identification robotique (Polytech - Sorbonne Université).
+## Auteurs
+Fatoumata Diallo & Marita El Hajj
