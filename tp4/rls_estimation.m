@@ -1,4 +1,5 @@
 function [TH, e_pre, trP] = rls_estimation(A, y, lambda, P1)
+
 [N, n] = size(A); theta = zeros(n,1); P=P1;
 TH = zeros(N,n); e_pre = zeros(N,1); trP=zeros(N,1);
 

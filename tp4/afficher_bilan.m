@@ -1,0 +1,6 @@
+function afficher_bilan(nom, s)
+
+fprintf('%-28s G=%7.4f Fv=%9.5f Fs=%8.4f off=%8.4f | ecart%%:%s | fluct%%:%s | rms(e)=%.4f\n', ...
+        nom, s.final(1), s.final(2), s.final(3), s.final(4), ...
+        sprintf(' %8.1f', s.ecart), sprintf(' %8.1f', s.fluct), s.rms);
+end
